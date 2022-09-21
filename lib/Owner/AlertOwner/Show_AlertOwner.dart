@@ -15,7 +15,7 @@ class _ShowAlertOwnerState extends State<ShowAlertOwner> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Show"),
-        backgroundColor: Color.fromARGB(226, 140, 57, 248),
+        backgroundColor: const Color.fromARGB(226, 140, 57, 248),
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -23,23 +23,23 @@ class _ShowAlertOwnerState extends State<ShowAlertOwner> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
-              color: Color(0xFF7C54ED),
+            decoration: const BoxDecoration(
+              color: const Color(0xFF7C54ED),
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(
+                  const Text(
                     'รายชื่อผู้เข้าร่วม',
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                      children: const [
                         Text(
                           'ลำดับที่',
                         ),
@@ -54,7 +54,8 @@ class _ShowAlertOwnerState extends State<ShowAlertOwner> {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                       child: ListView(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
@@ -63,7 +64,7 @@ class _ShowAlertOwnerState extends State<ShowAlertOwner> {
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
+                            children: const [
                               Text(
                                 'Hello World',
                               ),

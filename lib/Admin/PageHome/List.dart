@@ -1,26 +1,25 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/material.dart';
+import 'package:volunteer/Admin/Allow_Admin_Confirm.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:volunteer/Admin/Allow_Admin_View.dart';
 
-class ShowActiAdmin extends StatefulWidget {
-  const ShowActiAdmin({Key? key}) : super(key: key);
+class ListPage extends StatefulWidget {
+  const ListPage({Key? key}) : super(key: key);
 
   @override
-  State<ShowActiAdmin> createState() => _ShowActiAdminState();
+  State<ListPage> createState() => _ListPageState();
 }
 
-class _ShowActiAdminState extends State<ShowActiAdmin> {
+class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('กิจกรรมทั้งหมด'),
-        backgroundColor: const Color.fromARGB(226, 140, 57, 248),
-      ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection("Data").snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection("Data")
+              .where("confirm_form_admin", isEqualTo: "0")
+              .snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
               return const Center(
@@ -40,7 +39,7 @@ class _ShowActiAdminState extends State<ShowActiAdmin> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AllowAdminView(
+                                  builder: (context) => AllowAdminConfirm(
                                         name: snapshot.data!.docs[index]
                                             ['name_activity'],
                                         time_add: snapshot
@@ -99,14 +98,14 @@ class _ShowActiAdminState extends State<ShowActiAdmin> {
                                               TextButton(
                                                   child: const Text('ตกลง'),
                                                   onPressed: () {
+                                                    Navigator.pop(
+                                                        context, 'ตกลง');
                                                     FirebaseFirestore.instance
                                                         .collection("Data")
                                                         .doc(snapshot.data!
                                                                 .docs[index]
                                                             ['name_activity'])
                                                         .delete();
-                                                    Navigator.pop(
-                                                        context, 'ตกลง');
                                                   }),
                                             ],
                                           ),
@@ -115,9 +114,8 @@ class _ShowActiAdminState extends State<ShowActiAdmin> {
                                       icon: const Icon(Icons.delete))
                                 ],
                               ),
-                              subtitle: Text(snapshot
-                                  .data!.docs[index]['email_owner']
-                                  .toString()),
+                              subtitle: Text(
+                                  snapshot.data!.docs[index]['email_owner']),
                             ),
                           ],
                         ),
@@ -129,5 +127,31 @@ class _ShowActiAdminState extends State<ShowActiAdmin> {
             );
           }),
     );
+
+    // Scaffold(
+    //   body: Center(
+    //     child: ListView(
+    //       children: [
+    //         Card(
+    //           child: InkWell(
+    //             onTap: () => Navigator.push(
+    //               context,
+    //               MaterialPageRoute(builder: (context) => AllowAdmin()),
+    //             ),
+    //             child: Column(
+    //               children: [
+    //                 ListTile(
+    //                   title: Text(snapshot.data!.docs[index]['confirm'] != 1
+    //                       /? "รอการอนุมัติ"
+    //                       : "อนุมัติแล้ว"),
+    //                 ),
+    //               ],
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }

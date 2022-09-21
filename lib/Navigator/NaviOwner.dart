@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:volunteer/Owner/Add_Owner.dart';
+import 'package:volunteer/Owner/Add_Data_Owner.dart';
 import 'package:volunteer/Owner/Home_Owner.dart';
 import 'package:volunteer/Owner/List_Owner.dart';
 import 'package:volunteer/Owner/Setting_Owner.dart';
@@ -18,7 +18,7 @@ class _NavibarOwnerState extends State<NavibarOwner> {
   int currentIndex = 0;
   final screens = [
     HomeOwner(),
-    AddOwner(),
+    AddDataOwner(),
     ListOwner(),
     SetOwner(),
   ];
@@ -34,22 +34,22 @@ class _NavibarOwnerState extends State<NavibarOwner> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'หน้าหลัก',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_circle),
-            label: 'Add',
+            label: 'เพิ่มข้อมูล',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'List',
+            label: 'รายการ',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Setting',
+            label: 'ตั้งค่า',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
         ],

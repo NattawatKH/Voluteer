@@ -31,22 +31,22 @@ class _NavibarUserState extends State<NavibarUser> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'หน้าหลัก',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.access_time),
-            label: 'Time',
+            label: 'เวลา',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'List',
+            label: 'รายการ',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Setting',
+            label: 'ตั้งค่า',
             backgroundColor: Color.fromARGB(226, 140, 57, 248),
           ),
         ],

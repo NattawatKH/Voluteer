@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:volunteer/Admin/ShowActi_Admin.dart';
 import 'package:volunteer/Admin/ShowOwner_Admin.dart';
 import 'package:volunteer/Admin/ShowUser_Admin.dart';
-import 'package:volunteer/Users/ShowActi_User.dart';
+import 'package:volunteer/componance/Font.dart';
 
 class InferPage extends StatefulWidget {
   const InferPage({Key? key}) : super(key: key);
@@ -23,11 +24,17 @@ class _InferPageState extends State<InferPage> {
               child: InkWell(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowActiUser()),
+                  MaterialPageRoute(
+                      builder: (context) => const ShowActiAdmin()),
                 ),
                 child: ListTile(
-                  title: Text('กิจกรรมทั้งหมด'),
-                  subtitle: Text('ดูกิจกรรมทั้งหมด'),
+                  title: Text(
+                    'กิจกรรมทั้งหมด',
+                    style: Home_Indur_List_18,
+                  ),
+                  subtitle: const Text(
+                    'ดูกิจกรรมทั้งหมด',
+                  ),
                 ),
               ),
             ),
@@ -35,11 +42,14 @@ class _InferPageState extends State<InferPage> {
               child: InkWell(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowOwner()),
+                  MaterialPageRoute(builder: (context) => const ShowOwner()),
                 ),
                 child: ListTile(
-                  title: Text('รายชื่อผู้จัดกิจกรรม'),
-                  subtitle: Text('ดูรายชื่อผู้จัดกิจกรรมทั้งหมด'),
+                  title: Text(
+                    'รายชื่อผู้จัดกิจกรรม',
+                    style: Home_Indur_List_18,
+                  ),
+                  subtitle: const Text('ดูรายชื่อผู้จัดกิจกรรมทั้งหมด'),
                 ),
               ),
             ),
@@ -47,11 +57,14 @@ class _InferPageState extends State<InferPage> {
               child: InkWell(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowUser()),
+                  MaterialPageRoute(builder: (context) => const ShowUser()),
                 ),
                 child: ListTile(
-                  title: Text('รายชื่อนิสิต'),
-                  subtitle: Text('ดูรายชื่อนิสิตทั้งหมด'),
+                  title: Text(
+                    'รายชื่อผู้กู้ยืมกยศ.',
+                    style: Home_Indur_List_18,
+                  ),
+                  subtitle: const Text('ดูรายชื่อนิสิตทั้งหมด'),
                 ),
               ),
             ),

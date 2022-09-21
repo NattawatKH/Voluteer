@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:volunteer/Database/Auth.dart';
+import 'package:volunteer/Login.dart';
 
 class SetUser extends StatefulWidget {
   const SetUser({Key? key}) : super(key: key);
@@ -10,109 +12,48 @@ class SetUser extends StatefulWidget {
 }
 
 class _SetUserState extends State<SetUser> {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Setting"),
-        backgroundColor: Color.fromARGB(226, 140, 57, 248),
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
+    return WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("ตั้งค่า"),
+            backgroundColor: Color.fromARGB(226, 140, 57, 248),
+            automaticallyImplyLeading: false,
+          ),
+          body: ListView(
             children: [
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF7C54ED),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
-                              child: Container(
-                                width: 100,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        'เปลี่ยนรหัส',
-                                        textAlign: TextAlign.start,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 40),
-                              child: Container(
-                                width: 100,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10, 0, 30, 0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'ออกจากระบบ',
-                                      ),
-                                      Icon(
-                                        Icons.login,
-                                        color: Colors.black,
-                                        size: 36,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+              GestureDetector(
+                onTap: () {
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: const Text('ออกจากระบบ'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'ยกเลิก'),
+                          child: const Text('ยกเลิก'),
+                        ),
+                        TextButton(
+                            child: const Text('ตกลง'),
+                            onPressed: () {
+                              _auth.Logout(context);
+                            }),
+                      ],
+                    ),
+                  );
+                },
+                child: const Card(
+                  child: ListTile(
+                    trailing: Icon(Icons.logout),
+                    title: Text("ออกจากระบบ"),
                   ),
                 ),
-              ),
+              )
             ],
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

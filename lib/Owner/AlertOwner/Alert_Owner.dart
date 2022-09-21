@@ -15,7 +15,7 @@ class _WarnOwnerState extends State<AlertOwner> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Warn"),
-        backgroundColor: Color.fromARGB(226, 140, 57, 248),
+        backgroundColor: const Color.fromARGB(226, 140, 57, 248),
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -23,7 +23,7 @@ class _WarnOwnerState extends State<AlertOwner> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFF7C54ED),
             ),
             child: Column(
@@ -31,28 +31,29 @@ class _WarnOwnerState extends State<AlertOwner> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10, 0, 10, 0),
                           child: Container(
                             width: 100,
                             height: 100,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFEEEEEE),
+                            decoration: const BoxDecoration(
+                              color: const Color(0xFFEEEEEE),
                             ),
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  5, 0, 5, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: [
+                                children: const [
                                   Text(
                                     'Hello World',
                                   ),
